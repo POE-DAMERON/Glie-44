@@ -1,0 +1,12 @@
+name: glie-44
+
+dependencies:
+  - ipython
+  - matplotlib
+  - pandas
+  - numpy
+  - pillow
+  - opencv2
+  - google-colab
+  - torch
+  - torchvision
