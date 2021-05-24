@@ -26,7 +26,7 @@ class Glie_44():
 
     def __init__(self, precision=.2,
                  font_path=Path().absolute().joinpath(
-                     'Data/fonts/Roboto-Regular.ttf'
+                     '../Data/fonts/Roboto-Regular.ttf'
                  )):
         self._precision = precision
         self._font_path = str(font_path)

@@ -246,7 +246,7 @@ class VideoTab:
             self.display_video()
 
         self.predict_button = ttk.Button(self.main_frame, text="Begin prediction",
-                                         width=200,
+                                         width=20,
                                          command=lambda: self.prepare_prediction())
         self.predict_button.grid(column=2, row=2)
 
@@ -279,6 +279,7 @@ class VideoTab:
 
     def run_video(self):
         if self.cap.isOpened():
+            self.delay = int(1000/self.cap.get(cv2.CAP_PROP_FPS))
             ret, frame = self.get_frame()
             if ret:
                 self.display_image(Image.fromarray(frame))
@@ -411,7 +412,7 @@ class DirectoryTab:
         # Video related attributes
 
         self.running = False
-        self.delay = 15
+        self.delay = 24
 
         ttk.Label(self.main_frame, text="Prediction on directories of images").grid(
             column=0, row=0, columnspan=3)
