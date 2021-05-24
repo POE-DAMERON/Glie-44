@@ -51,27 +51,33 @@ class UI:
 
         # Creates the different frames for each tabs
 
+        legend_tab = ttk.Frame(notebook)
         image_tab = ttk.Frame(notebook)
         video_tab = ttk.Frame(notebook)
         folder_tab = ttk.Frame(notebook)
 
         # Adds the tabs to the notebook
 
+        notebook.add(legend_tab, text='Legend')
         notebook.add(image_tab, text='Image')
         notebook.add(video_tab, text='Video')
         notebook.add(folder_tab, text='Directory')
         notebook.pack(expand=1, fill="both")
 
-        # Development of the first tab to predict on images
+        # Development of the first tab to explain the clsses
+
+        tabs.LegendTab(legend_tab)
+
+        # Development of the second tab to predict on images
 
         tabs.ImageTab(image_tab, self.max_width, self.max_height, self.glie)
 
-        # Development of the second tab to predict on videos
+        # Development of the third tab to predict on videos
 
         tabs.VideoTab(self._tk_root, video_tab, self.max_width,
                       self.max_height, self.glie)
 
-        # Development of the third tab to predict on a directory
+        # Development of the forth tab to predict on a directory
 
         tabs.DirectoryTab(self._tk_root, folder_tab, self.max_width,
                           self.max_height, self.glie)

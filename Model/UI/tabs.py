@@ -588,3 +588,34 @@ class DirectoryTab:
 
     def browse(self):
         return filedialog.askdirectory(initialdir="/", title="Select a directory with the video images")
+
+
+class LegendTab:
+    """
+        Displays the elements to be shown on the screen.
+    """
+
+    def __init__(self, main_frame):
+        classes = [
+            "ignored regions",
+            "pedestrian",
+            "people",
+            "bicycle",
+            "car",
+            "van",
+            "truck",
+            "tricycle",
+            "awning-tricycle",
+            "bus",
+            "motor",
+            "other"
+        ]
+
+        ttk.Label(main_frame, text="Classes:").grid(
+            column=0, row=0, columnspan=2, pady=20, padx=80)
+
+        for i in range(len(classes)):
+            ttk.Label(main_frame, text=str(i)).grid(
+                column=0, row=i+1, pady=3, padx=10)
+            ttk.Label(main_frame, text=classes[i]).grid(
+                column=1, row=i+1)
