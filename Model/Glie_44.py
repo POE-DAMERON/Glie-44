@@ -1,5 +1,4 @@
 import cv2 as cv
-import transforms as T
 from pathlib import Path
 from os import path, listdir
 from Glie_44_utils import Utils
