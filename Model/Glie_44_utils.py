@@ -1,21 +1,24 @@
 from PIL import ImageDraw, ImageFont
-import transforms as T
+import torchvision
 
 
 class Utils():
+
+    """
+      converts a PIL image into a PyTorch Tensor
+    """
+
     @staticmethod
     def to_tensor():
-        transforms = []
-        # converts the image, a PIL image, into a PyTorch Tensor
-        transforms.append(T.ToTensor())
-        return T.Compose(transforms)
+        return torchvision.transforms.Compose([torchvision.transforms.ToTensor()])
+
+    """
+    Input: Path of the txt file with annotations as in the VisDrone dataset\n
+    Output: A numpy array containing the information for bounding boxes
+  """
 
     @staticmethod
     def read_txt_visdrone(path):
-        """
-            Input: Path of the txt file with annotations as in the VisDrone dataset\n
-            Output: A numpy array containing the information for bounding boxes
-        """
         lines = []
         with open(path) as f:
             lines = f.readlines()
@@ -27,12 +30,15 @@ class Utils():
             df.append(splitLine)
         return df
 
-    @staticmethod
-    def slice(array, start, stop):
-        result = []
-        for i in range(stop-start):
-            result.append(array[start + i])
-        return result
+    """
+    Adds boxes to a PIL image and takes as inputs:
+    the PIL image,
+    an array of boxes,
+    a list of classes,
+    a list of scores,
+    a path to the font to use,
+    the precision as a float between 0 and 1.
+  """
 
     @staticmethod
     def add_blocks(image, boxes, classes, scores, font_path, precision):
@@ -45,9 +51,17 @@ class Utils():
                 draw.text((boxes[i][0], boxes[i][1]), Utils.box_title(classes[i]), fill=(
                     255, 255, 255), stroke_fill=(0, 0, 0, 255), stroke_width=2, font=ImageFont.truetype(font_path, 20))
 
+    """
+    Returns the text to add on the screen to identify the class.
+  """
+
     @staticmethod
     def box_title(label_index):
         return str(label_index)
+
+    """
+    Returns a tuple representing the RGB colors depending on the class.
+  """
 
     @staticmethod
     def which_color(class_id):

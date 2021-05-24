@@ -9,8 +9,8 @@ import torch
 import torchvision
 
 """
-  Glie_44 represents the core of our program. It will run the predictions
-  depending on customizable settings.
+    Glie_44 represents the core of our program. It will run the predictions
+    depending on customizable settings.
 """
 
 
@@ -51,8 +51,8 @@ class Glie_44():
         return self._model
 
     """
-    Loads model from a given path, depending on the available device.
-  """
+        Loads model from a given path, depending on the available device.
+    """
 
     def load_model(self, path):
         if torch.cuda.is_available():
@@ -69,8 +69,8 @@ class Glie_44():
         return torchvision.transforms.ToTensor()(image_data)
 
     """
-      Takes a PIL image as an input and returns the image with the predicted
-      boxes. 
+        Takes a PIL image as an input and returns the image with the predicted
+        boxes. 
     """
 
     def run_on_image(self, image):
@@ -85,8 +85,8 @@ class Glie_44():
         return image
 
     """
-      Takes the path of an image as an input and returns the image with the 
-      predicted boxes. 
+        Takes the path of an image as an input and returns the image with the 
+        predicted boxes. 
     """
 
     def run_on_image_with_path(self, image_path):
@@ -94,8 +94,8 @@ class Glie_44():
         return self.run_on_image(image)
 
     """
-      Takes a folder path where the images should be in chronological order to 
-      compile the predicted images in a video.
+        Takes a folder path where the images should be in chronological order to 
+        compile the predicted images in a video.
     """
 
     def run_on_folder(self, folder_path=Path().absolute().joinpath(
@@ -137,8 +137,8 @@ class Glie_44():
 
         writer.release()
 
-        """
-      Takes a video file to predict each of its frames.
+    """
+        Takes a video file to predict each of its frames.
     """
 
     def run_on_video(self, video_path, output_folder=Path().absolute().joinpath('Glie-44/Model/outputs'), output_path=''):
